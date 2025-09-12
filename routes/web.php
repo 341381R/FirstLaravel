@@ -19,4 +19,12 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
+Route::get('/catpage', function () {
+    return view('catpage');
+})->name('catpage');
+
+Route::get('/NoContactPage', function () {
+    return view('NoContactPage');
+})->name('NoContactPage');
+
 require __DIR__.'/auth.php';
