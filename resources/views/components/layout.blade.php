@@ -31,7 +31,8 @@
                                 <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
                                 <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
                                 <x-nav-link href="/NoContactPage" :active="request()->is('NoContactPage')">No contact page</x-nav-link>
-                                <x-nav-link href="/catpage" :active="request()->is('catpage')">cat page</x-nav-link>
+                                <x-nav-link href="/catpage" :active="request()->is('catpage')">Cat page</x-nav-link>
+                                <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
                             </div>
                         </div>
                     </div>
