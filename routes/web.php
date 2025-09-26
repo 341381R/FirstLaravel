@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
-use \Illuminate\Support\Arr;
+use App\Models\Job;
 
 Route::get('/', function () {
     return view('welcome', [
@@ -32,46 +32,14 @@ Route::get('/NoContactPage', function () {
 
 Route::get('/jobs', function () {
     return view('jobs', [
-        'jobs' => [
-            [
-                'id' => 1,
-                'title' => 'colonel cat',
-                'salary' => '60 cans of cat food'
-            ],
-            [
-                'id' => 2,
-                'title' => 'mayor cat',
-                'salary' => '80 cans of cat food'
-            ],
-            [
-                'id' => 3,
-                'title' => 'factory worker cat',
-                'salary' => '45 cans of cat food'
-            ]
-        ]
+        'jobs' => Job::AllJobs()
     ]);
 })->name('jobs');
 
 Route::get('/jobs/{id}', function ($id) {
-    $jobs = [
-        [
-            'id' => 1,
-            'title' => 'colonel cat',
-            'salary' => '60 cans of cat food'
-        ],
-        [
-            'id' => 2,
-            'title' => 'mayor cat',
-            'salary' => '80 cans of cat food'
-        ],
-        [
-            'id' => 3,
-            'title' => 'factory worker cat',
-            'salary' => '45 cans of cat food'
-        ]
-    ];
-    $job = Arr::first($jobs, fn($job) => $job['id'] == $id);
-    return view('jobs');
+    $job = Job::JobSearch($id);
+
+    return view('job', ['job' => $job]);
 })->name('jobs');
 
 require __DIR__.'/auth.php';
